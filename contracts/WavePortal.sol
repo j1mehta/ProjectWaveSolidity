@@ -5,19 +5,27 @@ pragma solidity ^0.8.0;
 import "hardhat/console.sol";
 
 contract WavePortal {
+    //This is a state variable thats
+    //automatically initialized to 0 and 
+    //is stored permanently in contract storage
     uint256 totalWaves;
 
     constructor() {
-        console.log("Yo yo, I am a contract and I am smart");
+        console.log("Smart contract constructor");
     }
 
+    //Decalred as public so its available to be run through
+    //run.js
     function wave() public {
         totalWaves += 1;
-        console.log("%s has waved!", msg.sender);
+        //msg.sender: wallet address of the person who called the function
+        console.log("%s waved at you!", msg.sender);
     }
 
+
+    //View fn that doesn't change the state of any variable
     function getTotalWaves() public view returns (uint256) {
-        console.log("We have %d total waves!", totalWaves);
+        console.log("Current total waves: %d !!", totalWaves);
         return totalWaves;
     }
 }
